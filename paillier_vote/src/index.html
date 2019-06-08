@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>投票程序</title>
+
+	<link rel="shortcut icon" href="">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<h3>Key generation</h3>
+    <div class="row">
+    	<div class="span4">
+    		<label for="inputNumbits">Number of bits</label>
+    		<input value="64" type="text" id="inputNumbits" placeholder="Integer">
+
+    		<button id="btn_genkeypair" class="btn btn-primary">Generate keypair</button>
+    		<br><br>
+    		<label for="inputNumPrecompute">Number of pre-computations</label>
+    		<input value="4" type="text" id="inputNumPrecompute" placeholder="Integer">
+    		<button id="btn_precompute" type="submit" class="btn">Pre-compute</button>
+    	</div>
+    	<div class="span7 offset1 result">
+    		<p>public n: <span id="pubn" class="ciphertext">-</span></p>
+    		<p>private lambda: <span id="privl" class="ciphertext">-</span></p>
+    		<p>Elapsed time (keygen): <span id="keygentime">-</span> ms</p>
+    		<p>Elapsed time (precomputation): <span id="precomputetime">-</span> ms</p>
+    	</div>
+    </div>
+	
+	<h3>Test input</h3>
+    <div class="row">
+    	<div class="span4">
+    		<label class="control-label" for="inputA">Test input A</label>
+    		<input value="" type="text" id="inputA" placeholder="Integer">
+    		<label class="control-label" for="inputB">Test input B</label>
+    		<input value="" type="text" id="inputB" placeholder="Integer">
+    		<button id="btn_encrypt" type="submit" class="btn btn-primary">Encrypt</button>
+        </div>
+    	<div class="span7 offset1 result">
+    		<p>[A] = <span class="ciphertext" id="encA">-</span></p>
+    		<p>Elapsed time: <span id="encAtime">-</span> ms</p>    		
+    		<p>[B] = <span class="ciphertext" id="encB">-</span></p>
+    		<p>Elapsed time: <span id="encBtime">-</span> ms</p>
+    	</div>
+    </div>
+
+	<h3>Decryption</h3>
+    <div class="row">
+    	<div class="span4">
+    		<input value="" type="text" id="result" placeholder="Integer">
+    		<button id="btn_decrypt" type="submit" class="btn btn-primary">Decrypt</button>
+        </div>
+    	<div class="span7 offset1 result">
+			<p>result = <span class="plaintext" id="plainABC">-</span></p>
+    		<p>Elapsed time: <span id="decrypttime">-</span> ms</p>    		
+    	</div>
+    </div> 
+
+    <div id="content">
+        <h1 id="title">投票程序</h1>
+        <h2 id="info"></h2>
+        <div id="loader"></div>
+        <div id="update">
+			<div>
+                <label for="name">添加公钥：</label>
+                <input type="text" id="add_publickey">
+            	<button id="btn_add_publickey">更新</button>
+			</div>
+            <div>
+                <label for="name">添加候选人：</label>
+                <input type="text" id="add_candidates">
+            	<button id="btn_add_candidates">更新</button>
+			</div>
+            <div>
+                <label for="age">添加投票人：</label>
+                <input type="text" id="add_voters">
+            	<button id="btn_add_voters">更新</button>
+            </div>
+            <div>
+                <label for="vote">投票：</label>
+                <input type="text" id="vote_addr">
+				<input type="text" id="vote_count">
+            	<button id="btn_vote">投票</button>
+            </div>
+			<div>
+            	<button id="btn_getresult">结果</button>
+            </div>
+			<div>
+            	<button id="btn_clearvote">清除结果</button>
+            </div>
+        </div>
+    </div>
+  </body>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/index.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jsbn/jsbn.js"></script>
+	<script type="text/javascript" src="js/jsbn/jsbn2.js"></script>
+	<script type="text/javascript" src="js/jsbn/prng4.js"></script>
+	<script type="text/javascript" src="js/jsbn/rng.js"></script>
+	<script type='text/javascript' src='js/paillier.js'></script>
+</html>

@@ -1,0 +1,7 @@
+body{background:#f0f0f0;}
+#content{width:350px;margin:0 auto;}
+#title{text-align: center;}
+#info{padding:0.5em;background: lightblue;margin:1em 0;}
+#update{padding:1em;background: lightgreen}
+#name{border:none;}#age{border:none;}
+button{margin:1em 0;}
